@@ -1,12 +1,14 @@
 #ifndef TESTLITE_H
 #define TESTLITE_H
-      
-#include "assert_macros.h"
-#include "fixture_management.h"
-#include "stdbool.h"
 
-static void _fixture_setup(void);
-static void _fixture_teardown(void);
+#include "metal_hooks.h"
+#include "implementation/fixture_management.h"
+
+#if defined (__LINE__) && defined (__FILE__)
+   #include "implementation/assert_macros.h"
+#else
+   #include "implementation/simple_assert_macros.h"
+#endif
 
 #define METAL_FIXTURE_DEFINE \
    static struct _fixture_type _fixture; \

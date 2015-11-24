@@ -12,8 +12,11 @@ METAL_FIXTURE_TEARDOWN {};
 
 METAL_SUITE {
    METAL_TEST(simple_test) {
-      int test_value = 5;
+      int test_value = 4;
       METAL_ASSERT(test_value);
+
+      int expected_value = 8;
+      METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.fixture_element);
    };
 };
 
