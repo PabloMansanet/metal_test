@@ -12,4 +12,7 @@ set(METALTEST_LIBRARIES)
 
 add_subdirectory(source)
 
+add_library(metal_hooks metal_hooks.c)
 add_executable(main main.c)
+
+target_link_libraries(main metal_hooks)

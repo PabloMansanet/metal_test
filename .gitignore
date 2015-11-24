@@ -34,6 +34,8 @@
 # Project specific
 CMakeCache.txt
 CMakeFiles/
+Makefile
 bin/
 *.swp
 *.cmake
+log.c
