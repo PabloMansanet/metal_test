@@ -28,6 +28,10 @@
 
 #define METAL_TEST(test_name) \
    _current_test = #test_name; \
+   metal_print_string("---------------\n"  \
+                      "--Running test: "); \
+   metal_print_string(_current_test); \
+   metal_print_string("\n---------------\n"); \
    _metal_teardown(); \
    _fixture_nuke(); \
    _metal_setup(); \
