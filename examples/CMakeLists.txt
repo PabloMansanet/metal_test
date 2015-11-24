@@ -8,7 +8,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 include_directories(../include)
 
 set(EXAMPLES 
-    simple_fixture_example)
+    simple_fixture_example
+    simple_fixtureless_example)
 
 add_library(example_metal_hooks example_metal_hooks.c)
 
