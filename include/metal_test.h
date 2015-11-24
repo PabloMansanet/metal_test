@@ -1,5 +1,5 @@
-#ifndef TESTLITE_H
-#define TESTLITE_H
+#ifndef METAL_TEST_H
+#define METAL_TEST_H
 
 #include "metal_hooks.h"
 #include "implementation/fixture_management.h"
@@ -14,11 +14,11 @@
    static struct _fixture_type _fixture; \
    struct _fixture_type
 
-#define METAL_FIXTURE_SETUP \
-   static void _fixture_setup(void) \
+#define METAL_SETUP \
+   static void _metal_setup(void) \
 
-#define METAL_FIXTURE_TEARDOWN \
-   static void _fixture_teardown(void) \
+#define METAL_TEARDOWN \
+   static void _metal_teardown(void) \
 
 #define METAL_FIXTURE (_fixture)
 
@@ -28,8 +28,8 @@
 
 #define METAL_TEST(test_name) \
    _current_test = #test_name; \
-   _fixture_teardown(); \
+   _metal_teardown(); \
    _fixture_nuke(); \
-   _fixture_setup(); \
+   _metal_setup(); \
 
 #endif
