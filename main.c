@@ -5,14 +5,14 @@ METAL_FIXTURE_DEFINE {
 };
 
 METAL_FIXTURE_SETUP {
-   TL_FIXTURE.fixture_element = 7;
+   METAL_FIXTURE.fixture_element = 7;
 };
 
 METAL_FIXTURE_TEARDOWN {};
 
 METAL_SUITE {
-   TL_TEST(simple_test) {
-      TL_ASSERT_EQ(TL_FIXTURE.fixture_element, 8);
+   METAL_TEST(simple_test) {
+      METAL_ASSERT_EQ(METAL_FIXTURE.fixture_element, 8);
    };
 };
 
