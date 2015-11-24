@@ -37,3 +37,4 @@ CMakeFiles/
 bin/
 *.swp
 *.cmake
+log.c

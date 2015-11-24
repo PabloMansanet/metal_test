@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/cuervo/Desktop/repos/metaltest
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -123,6 +123,19 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named metal_hooks
+
+# Build rule for target.
+metal_hooks: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 metal_hooks
+.PHONY : metal_hooks
+
+# fast build rule for target.
+metal_hooks/fast:
+	$(MAKE) -f CMakeFiles/metal_hooks.dir/build.make CMakeFiles/metal_hooks.dir/build
+.PHONY : metal_hooks/fast
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -150,18 +163,49 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
+metal_hooks.o: metal_hooks.c.o
+
+.PHONY : metal_hooks.o
+
+# target to build an object file
+metal_hooks.c.o:
+	$(MAKE) -f CMakeFiles/metal_hooks.dir/build.make CMakeFiles/metal_hooks.dir/metal_hooks.c.o
+.PHONY : metal_hooks.c.o
+
+metal_hooks.i: metal_hooks.c.i
+
+.PHONY : metal_hooks.i
+
+# target to preprocess a source file
+metal_hooks.c.i:
+	$(MAKE) -f CMakeFiles/metal_hooks.dir/build.make CMakeFiles/metal_hooks.dir/metal_hooks.c.i
+.PHONY : metal_hooks.c.i
+
+metal_hooks.s: metal_hooks.c.s
+
+.PHONY : metal_hooks.s
+
+# target to generate assembly for a file
+metal_hooks.c.s:
+	$(MAKE) -f CMakeFiles/metal_hooks.dir/build.make CMakeFiles/metal_hooks.dir/metal_hooks.c.s
+.PHONY : metal_hooks.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... main"
+	@echo "... rebuild_cache"
+	@echo "... metal_hooks"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... metal_hooks.o"
+	@echo "... metal_hooks.i"
+	@echo "... metal_hooks.s"
 .PHONY : help
 
 

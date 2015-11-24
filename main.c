@@ -1,4 +1,4 @@
-#include "metaltest.h"
+#include "metal_test.h"
 
 METAL_FIXTURE_DEFINE {
    unsigned int fixture_element;
@@ -12,7 +12,8 @@ METAL_FIXTURE_TEARDOWN {};
 
 METAL_SUITE {
    METAL_TEST(simple_test) {
-      METAL_ASSERT_EQ(METAL_FIXTURE.fixture_element, 8);
+      int test_value = 5;
+      METAL_ASSERT(test_value);
    };
 };
 
