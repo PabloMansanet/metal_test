@@ -10,6 +10,7 @@ typedef union
 {
    float f;
    double d;
+   long double ld;
    int i;
    unsigned int ui;
    unsigned long ul;
@@ -17,6 +18,7 @@ typedef union
    long l;
    long long ll;
    char c;
+   unsigned char uc;
 } metal_punning_union;
 
 int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
@@ -33,15 +35,33 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
    return are_equal;
 }
 
+void metal_interpret_and_print_ll(const char* prefix, long long value) 
+{
+   metal_print_string(prefix);
+   metal_print_long_long(value);
+   metal_print_string("]");
+}
+
+void metal_interpret_and_print_ld(const char* prefix, long double value)
+{
+   metal_print_string(prefix);
+   metal_print_long_double(value);
+   metal_print_string("]");
+}
+
 void metal_report_possible_values(metal_punning_union* mpu) 
 {
-      metal_print_string("\n  |      \\->Interpretations: ");
-      metal_print_string("\n  |           [Integer: ");
-      metal_print_long_long(mpu->ll);
-      metal_print_string("], ");
-      metal_print_string("\n  |           [Floating Point: ");
-      metal_print_double(mpu->f);
-      metal_print_string("], ");
+   metal_print_string(          "\n  |      \\->Interpretations: ");
+   metal_interpret_and_print_ll("\n  |           [char:               ",mpu->c);
+   metal_interpret_and_print_ll("\n  |           [int:                ",mpu->i);
+   metal_interpret_and_print_ll("\n  |           [long:               ",mpu->l);
+   metal_interpret_and_print_ll("\n  |           [long long:          ",mpu->ll);
+   metal_interpret_and_print_ll("\n  |           [unsigned char:      ",mpu->uc);
+   metal_interpret_and_print_ll("\n  |           [unsigned int:       ",mpu->ui);
+   metal_interpret_and_print_ll("\n  |           [unsigned long:      ",mpu->ul);
+   metal_interpret_and_print_ld("\n  |           [float:              ",mpu->f);
+   metal_interpret_and_print_ld("\n  |           [double:             ",mpu->d);
+   metal_interpret_and_print_ld("\n  |           [long double:        ",mpu->ld);
 }
 
 

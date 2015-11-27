@@ -21,7 +21,7 @@ METAL_SUITE_BEGIN
 
    METAL_TEST(example_second_failing_test) 
    {
-      METAL_ASSERT_EQ((unsigned int)-5,0);
+      METAL_ASSERT_EQ(-5,0);
    }
 }
 METAL_SUITE_END 

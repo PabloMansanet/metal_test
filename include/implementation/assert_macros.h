@@ -6,9 +6,9 @@
 #define METAL_ASSERT(value) { \
    int metal_evaluated_value = (value); \
    if ( metal_evaluated_value == 0) {  \
-      metal_print_string("  *-- Assertion failure at "__FILE__":"); \
+      metal_print_string("  *Assertion failure at "__FILE__":"); \
       metal_print_long_long(__LINE__); \
-      metal_print_string("\n       \\---> "#value" evaluated as false."); \
+      metal_print_string("\n  |---> "#value" evaluated as false\n  \\---> "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
       METAL_MAIN_TRAMPOLINE(); \
@@ -26,10 +26,10 @@
    if (!metal_bitwise_compare(&evaluated_expected_value, &evaluated_actual_value)) { \
       metal_print_string("  * Assertion failure at "__FILE__":"); \
       metal_print_long_long(__LINE__); \
-      metal_print_string("\n  |---> Expected: "#expected", evaluated as: 0x"); \
+      metal_print_string("\n  |---> Expected: \""#expected"\", evaluated as: 0x"); \
       metal_print_hex(evaluated_expected_value.ll); \
       metal_report_possible_values(&evaluated_expected_value); \
-      metal_print_string("\n  |---> Actual: "#actual", evaluated as: 0x"); \
+      metal_print_string("\n  |---> Actual: \""#actual"\", evaluated as: 0x"); \
       metal_print_hex(evaluated_actual_value.ll); \
       metal_report_possible_values(&evaluated_actual_value); \
       metal_print_string("\n  \\--> Test "); \
