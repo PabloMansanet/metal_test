@@ -27,13 +27,11 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
    char* byte_handle_1 = (char*) mpu1;
    char* byte_handle_2 = (char*) mpu2;
 
-   int are_equal = 1;   
    for (int i = 0; i< sizeof(metal_punning_union); i++) {
-      if (*(byte_handle_1 + i) != *(byte_handle_2 + i)) 
-         are_equal = 0;
+      if (byte_handle_1[i] != byte_handle_2[i]) 
+         return 0;
    }
-
-   return are_equal;
+   return 1;
 }
 
 void metal_interpret_and_print_ll(const char* prefix, long long value) 

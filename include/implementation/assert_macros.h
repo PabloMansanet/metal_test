@@ -19,7 +19,6 @@
 // Bitwise compare. It uses type punning to provide possible interpretations
 // of the input types, so it will offer less useful output than the type 
 // specific assertion macros. Use with care.
-
 #define METAL_ASSERT_EQ(expected, actual) { \
    metal_punning_union evaluated_expected_value = (metal_punning_union)(expected); \
    metal_punning_union evaluated_actual_value = (metal_punning_union)(actual); \

@@ -41,7 +41,7 @@
    if (metal_skip) \
    {  \
       entry_flag_##test_name = 0; \
-      if ( !metal_strcmp(metal_current_test, #test_name) ) \
+      if (metal_string_eq(metal_current_test, #test_name) ) \
       { \
          metal_skip = 0; \
       } \

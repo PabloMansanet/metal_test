@@ -12,10 +12,10 @@ set(EXAMPLES
     types_example
     simple_fixtureless_example)
 
-add_library(example_metal_hooks example_metal_hooks.c)
+add_library(stdlib_metal_hooks stdlib_metal_hooks.c)
 
 foreach (EXAMPLE ${EXAMPLES})
    add_executable(${EXAMPLE} ${EXAMPLE}.c)
-   target_link_libraries(${EXAMPLE} example_metal_hooks)
+   target_link_libraries(${EXAMPLE} stdlib_metal_hooks)
 endforeach(EXAMPLE)
 
