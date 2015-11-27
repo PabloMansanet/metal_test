@@ -12,6 +12,8 @@ typedef union
    double d;
    int i;
    unsigned int ui;
+   unsigned long ul;
+   unsigned long long ull;
    long l;
    long long ll;
    char c;
@@ -19,8 +21,8 @@ typedef union
 
 int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
 {
-   char* byte_handle_1 = (char*) &mpu1;
-   char* byte_handle_2 = (char*) &mpu2;
+   char* byte_handle_1 = (char*) mpu1;
+   char* byte_handle_2 = (char*) mpu2;
 
    int are_equal = 1;   
    for (int i = 0; i< sizeof(metal_punning_union); i++) {
@@ -33,14 +35,12 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
 
 void metal_report_possible_values(metal_punning_union* mpu) 
 {
-      metal_print_string("[Int: ");
-      metal_print_long(mpu->i);
+      metal_print_string("\n  |      \\->Interpretations: ");
+      metal_print_string("\n  |           [Integer: ");
+      metal_print_long_long(mpu->ll);
       metal_print_string("], ");
-      metal_print_string("[Char: ");
-      metal_print_long(mpu->c);
-      metal_print_string("], ");
-      metal_print_string("[Double: ");
-      metal_print_double(mpu->d);
+      metal_print_string("\n  |           [Floating Point: ");
+      metal_print_double(mpu->f);
       metal_print_string("], ");
 }
 

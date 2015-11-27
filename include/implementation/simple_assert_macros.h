@@ -20,6 +20,7 @@
       metal_print_string("Assertion failure at test: "); \
       metal_print_string(metal_current_test); \
       metal_print_string("\nExpected: "#expected", evaluated as "); \
+      metal_print_hex(metal_evaluated_expected.ll); \
       metal_print_long(metal_evaluated_expected); \
       metal_print_string("\nActual: "#actual", evaluated as "); \
       metal_print_long(metal_evaluated_actual); \

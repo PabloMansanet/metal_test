@@ -2,7 +2,7 @@
 
 METAL_FIXTURE_DEFINE 
 {
-   unsigned int example_integer;
+   int example_integer;
    float example_float;
 };
 
