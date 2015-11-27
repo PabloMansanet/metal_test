@@ -12,7 +12,8 @@ METAL_SETUP {
 
 METAL_TEARDOWN {};
 
-METAL_SUITE {
+METAL_SUITE_BEGIN
+
    METAL_TEST(example_passing_test_with_fixture) {
       METAL_ASSERT(METAL_FIXTURE.example_integer);
 
@@ -30,5 +31,5 @@ METAL_SUITE {
       int expected_value = 0;
       METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.example_integer);
    }
-};
 
+METAL_SUITE_END
