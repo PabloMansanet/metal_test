@@ -24,10 +24,18 @@
 
 #define METAL_FIXTURE (metal_fixture)
 
-#define METAL_SUITE \
+#define METAL_SUITE_BEGIN \
    static char* metal_current_test = 0; \
    static char metal_skip = 0; \
-   int main(void) 
+   int main(void) \
+   { \
+   metal_main: \
+   (void)0;
+
+
+#define METAL_SUITE_END \
+   if (metal_current_test) metal_teardown(); \
+}  // End main
 
 #define METAL_TEST( test_name ) \
    char entry_flag_##test_name = 1; \

@@ -9,6 +9,7 @@
       metal_print_string("\n       \\---> "#value" evaluated as false."); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
+      METAL_MAIN_TRAMPOLINE(); \
    } \
 }
 
@@ -25,11 +26,12 @@
       metal_print_string("\n  \\-> Test "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
+      METAL_MAIN_TRAMPOLINE(); \
    } \
 }
 
 #define METAL_MAIN_TRAMPOLINE() { \
    metal_skip = 1; \
-   goto main; 
+   goto metal_main; }
 
 #endif
