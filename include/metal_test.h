@@ -3,6 +3,8 @@
 
 #include "metal_hooks.h"
 #include "implementation/fixture_management.h"
+#include "string.h" //temporary for strcmp
+
 
 #if defined (__LINE__) && defined (__FILE__)
    #include "implementation/assert_macros.h"
@@ -11,29 +13,51 @@
 #endif
 
 #define METAL_FIXTURE_DEFINE \
-   static struct _fixture_type _fixture; \
-   struct _fixture_type
+   static struct metal_fixture_type metal_fixture; \
+   struct metal_fixture_type
 
 #define METAL_SETUP \
-   static void _metal_setup(void) \
+   static void metal_setup(void) \
 
 #define METAL_TEARDOWN \
-   static void _metal_teardown(void) \
+   static void metal_teardown(void) \
 
-#define METAL_FIXTURE (_fixture)
+#define METAL_FIXTURE (metal_fixture)
 
-#define METAL_SUITE \
-   static char* _current_test = 0; \
-   int main(void)
+#define METAL_SUITE_BEGIN \
+   static char* metal_current_test = 0; \
+   static char metal_skip = 0; \
+   int main(void) \
+   { \
+   metal_main: \
+   (void)0;
 
-#define METAL_TEST(test_name) \
-   _current_test = #test_name; \
-   metal_print_string("---------------\n"  \
-                      "--Running test: "); \
-   metal_print_string(_current_test); \
-   metal_print_string("\n---------------\n"); \
-   _metal_teardown(); \
-   _fixture_nuke(); \
-   _metal_setup(); \
+
+#define METAL_SUITE_END \
+   if (metal_current_test) metal_teardown(); \
+}  // End main
+
+#define METAL_TEST( test_name ) \
+   char entry_flag_##test_name = 1; \
+   if (metal_skip) \
+   {  \
+      entry_flag_##test_name = 0; \
+      if ( !strcmp(metal_current_test, #test_name) ) \
+      { \
+         metal_skip = 0; \
+      } \
+   }  \
+   if (entry_flag_##test_name) \
+   { \
+      if (metal_current_test) metal_teardown(); \
+      metal_current_test = #test_name; \
+      metal_print_string("------------------\n"  \
+                         "-- Running test -- "); \
+      metal_print_string(metal_current_test); \
+      metal_print_string("\n------------------\n"); \
+      metal_fixture_nuke(); \
+      metal_setup(); \
+   } \
+   if (entry_flag_##test_name) 
 
 #endif

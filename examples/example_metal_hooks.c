@@ -8,6 +8,10 @@ void metal_print_long(long value) {
    printf("%ld",value);
 }
 
+void metal_print_double(double value) {
+   printf("%f",value);
+}
+
 void metal_crash(void) {
    while (1);
 }
