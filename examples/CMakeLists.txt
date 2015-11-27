@@ -9,6 +9,7 @@ include_directories(../include)
 
 set(EXAMPLES 
     simple_fixture_example
+    types_example
     simple_fixtureless_example)
 
 add_library(example_metal_hooks example_metal_hooks.c)

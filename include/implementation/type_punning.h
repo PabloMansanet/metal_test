@@ -19,6 +19,7 @@ typedef union
    long long ll;
    char c;
    unsigned char uc;
+   void* p;
 } metal_punning_union;
 
 int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
@@ -28,7 +29,7 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
 
    int are_equal = 1;   
    for (int i = 0; i< sizeof(metal_punning_union); i++) {
-      if (*byte_handle_1 != *byte_handle_2) 
+      if (*(byte_handle_1 + i) != *(byte_handle_2 + i)) 
          are_equal = 0;
    }
 
