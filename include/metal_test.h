@@ -24,16 +24,29 @@
 
 #define METAL_SUITE \
    static char* metal_current_test = 0; \
-   int main(void)
+   static char metal_skip_flag = 0;
+   int main(void) {
 
 #define METAL_TEST(test_name) \
-   if (metal_current_test) metal_teardown(); \
-   metal_current_test = #test_name; \
-   metal_print_string("------------------\n"  \
-                      "-- Running test -- "); \
-   metal_print_string(metal_current_test); \
-   metal_print_string("\n------------------\n"); \
-   metal_fixture_nuke(); \
-   metal_setup(); \
-
+   char entry_flag_#test_name = 1; \
+   if (metal_skip) \
+   {  \
+      entry_flag_#test_name = 0; \
+      if (metal_current_test == #test_name) \
+      { \
+         metal_skip_flag = 0; \
+      } \
+   }  \
+   if (entry_flag_#test_name) \
+   { \
+      if (metal_current_test) metal_teardown(); \
+      metal_current_test = #test_name; \
+      metal_print_string("------------------\n"  \
+                         "-- Running test -- "); \
+      metal_print_string(metal_current_test); \
+      metal_print_string("\n------------------\n"); \
+      metal_fixture_nuke(); \
+      metal_setup(); \
+   } \
+   if (entry_flag_#test_name) \
 #endif

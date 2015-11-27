@@ -6,9 +6,7 @@
    if ( metal_evaluated_value == 0) {  \
       metal_print_string("  *-- Assertion failure at "__FILE__":"); \
       metal_print_long(__LINE__); \
-      metal_print_string("\n  |    \\---> "#value" evaluated as "); \
-      metal_print_long(metal_evaluated_value); \
-      metal_print_string("\n  \\-> Test "); \
+      metal_print_string("\n  |    \\---> "#value" evaluated as false."); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
       metal_crash(); \
@@ -16,8 +14,8 @@
 }
 
 #define METAL_ASSERT_EQ(expected, actual) { \
-   long metal_evaluated_expected = (long)(expected); \
-   long metal_evaluated_actual   = (long)(actual); \
+   void* metal_evaluated_expected = (void*)(expected); \
+   void* metal_evaluated_actual   = (void*) (actual); \
    if (metal_evaluated_expected != metal_evaluated_actual) { \
       metal_print_string("  *-- Assertion failure at "__FILE__":"); \
       metal_print_long(__LINE__); \
@@ -31,5 +29,9 @@
       metal_crash(); \
    } \
 }
+
+#define METAL_MAIN_TRAMPOLINE() { \
+   metal_skip = 1; \
+   goto main; 
 
 #endif

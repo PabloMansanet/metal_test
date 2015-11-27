@@ -20,11 +20,12 @@ METAL_SUITE {
       METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.example_integer);
       METAL_FIXTURE.example_integer = 0; //Irrelevant, since the fixture will be recreated between tests.
    };
-   
-//   METAL_TEST(example_failing_float_test) {
-//      METAL_ASSERT_EQ(6.8, METAL_FIXTURE.example_float);
-//   };
 
+   METAL_TEST(example_float_test) {
+      float expected_value = 8.8;
+      METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.example_float);
+   }
+   
    METAL_TEST(example_failing_test_with_fixture) {
       int expected_value = 0;
       METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.example_integer);
