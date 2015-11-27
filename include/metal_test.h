@@ -21,7 +21,7 @@
 #define METAL_TEARDOWN \
    static void metal_teardown(void) \
 
-#define METAL_FIXTURE (metal_fixture)
+#define METAL_FIXTURE metal_fixture
 
 #define METAL_SUITE_BEGIN \
    static char* metal_current_test = 0; \
@@ -30,7 +30,6 @@
    { \
    metal_main: \
    (void)0;
-
 
 #define METAL_SUITE_END \
    if (metal_current_test) metal_teardown(); \
