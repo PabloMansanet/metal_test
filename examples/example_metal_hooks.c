@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "string.h"
 
 void metal_print_string(const char *str) {
    printf("%s",str);
@@ -12,6 +13,6 @@ void metal_print_double(double value) {
    printf("%f",value);
 }
 
-void metal_crash(void) {
-   while (1);
+int metal_strcmp (const char* str1, const char* str2) {
+   return strcmp(str1, str2);
 }

@@ -3,8 +3,7 @@
 
 #include "metal_hooks.h"
 #include "implementation/fixture_management.h"
-#include "string.h" //temporary for strcmp
-
+#include "string.h" 
 
 #if defined (__LINE__) && defined (__FILE__)
    #include "implementation/assert_macros.h"
@@ -42,7 +41,7 @@
    if (metal_skip) \
    {  \
       entry_flag_##test_name = 0; \
-      if ( !strcmp(metal_current_test, #test_name) ) \
+      if ( !metal_strcmp(metal_current_test, #test_name) ) \
       { \
          metal_skip = 0; \
       } \

@@ -4,6 +4,7 @@
 void metal_print_string(const char *str);
 void metal_print_double(double value);
 void metal_print_long(long value);
-void metal_crash(void);
+
+int metal_strcmp (const char* str1, const char* str2);
 
 #endif

@@ -39,3 +39,4 @@ bin/
 *.swp
 *.cmake
 log.c
+tags
