@@ -1,10 +1,6 @@
 #ifndef TYPE_PUNNING_H
 #define TYPE_PUNNING_H
 
-#define METAL_PUN_STORE( expression, union_name ) \
-metal_punning_union union_name = metal_generate_patterned_union(); \
-union_name = (metal_punning_union)(expression); \
-
 typedef union 
 {
    float f;
