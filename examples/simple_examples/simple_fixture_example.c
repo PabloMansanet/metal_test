@@ -5,6 +5,7 @@ METAL_FIXTURE_DEFINE
    int example_integer;
    float example_float;
 };
+METAL_FIXTURE_DECLARE;
 
 METAL_SETUP 
 {

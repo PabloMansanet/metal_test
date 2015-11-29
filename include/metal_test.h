@@ -12,8 +12,13 @@
 #endif
 
 #define METAL_FIXTURE_DEFINE \
-   static struct metal_fixture_type metal_fixture; \
    struct metal_fixture_type
+
+#define METAL_FIXTURE_DECLARE \
+   struct metal_fixture_type metal_fixture;
+
+#define METAL_FIXTURE_EXTERN \
+   extern struct metal_fixture_type metal_fixture;
 
 #define METAL_SETUP \
    static void metal_setup(void) \
@@ -22,6 +27,8 @@
    static void metal_teardown(void) \
 
 #define METAL_FIXTURE metal_fixture
+#define METAL_FIXTURE_TYPE metal_fixture_type
+
 
 #define METAL_SUITE_BEGIN \
    static char* metal_current_test = 0; \
