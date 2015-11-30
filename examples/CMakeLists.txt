@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 2.8)
 project(metal_test_examples)
 
-set(CMAKE_C_FLAGS "-g -Wall -Werror")
+if(CMAKE_COMPILER_IS_GNUC)
+   message(STATUS "GCC detected, adding compile flags")
+   set(CMAKE_C_FLAGS "-g -Wall -Werror -std=c99")
+endif(CMAKE_COMPILER_IS_GNUC)
+
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 

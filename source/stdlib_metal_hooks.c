@@ -5,15 +5,18 @@ void metal_print_string(const char *str) {
 }
 
 void metal_print_long_long(long long value) {
-   printf("%lld",value);
+   long conv = (long)value;
+   printf("%ld",conv);
 }
 
 
 void metal_print_long_double(long double value) {
-   printf("%Lf",value);
+double conv = (double)value;
+   printf("%f",conv);
 }
 
 void metal_print_hex(unsigned long long value) {
-   printf("%llx",value);
+	long conv = (long)value;
+    printf("%lx",conv);
 }
 
