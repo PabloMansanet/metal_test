@@ -9,7 +9,6 @@ void metal_print_long_long(long long value) {
    printf("%ld",conv);
 }
 
-
 void metal_print_long_double(long double value) {
 double conv = (double)value;
    printf("%f",conv);
