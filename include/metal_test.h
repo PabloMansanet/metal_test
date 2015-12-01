@@ -3,7 +3,6 @@
 
 #include "metal_hooks.h"
 #include "implementation/fixture_management.h"
-#include "string.h" 
 
 #if defined (__LINE__) && defined (__FILE__)
    #include "implementation/assert_macros.h"
