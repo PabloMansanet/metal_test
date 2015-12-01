@@ -39,6 +39,26 @@
    } \
 }
 
+int metal_strlen(const char* str);
+int metal_string_eq(const char* str1, const char* str2);
+
+#define METAL_ASSERT_STREQ(expected, actual) { \
+   const char* evaluated_expected = (expected); \
+   const char* evaluated_actual = (actual); \
+   if (!metal_string_eq(evaluated_expected, evaluated_actual)) { \
+      metal_print_string("  * Assertion failure at "__FILE__":"); \
+      metal_print_long_long(__LINE__); \
+      metal_print_string("\n  |-----> Expected: "#expected", evaluated as: \""); \
+      metal_print_string(evaluated_expected); \
+      metal_print_string("\"\n  |-----> Actual: "#actual", evaluated as: \""); \
+      metal_print_string(evaluated_actual); \
+      metal_print_string("\"\n  \\--> Test "); \
+      metal_print_string(metal_current_test); \
+      metal_print_string(" failed!\n"); \
+      METAL_MAIN_TRAMPOLINE(); \
+   } \
+}
+
 #define METAL_MAIN_TRAMPOLINE() { \
    metal_skip = 1; \
    goto metal_main; }

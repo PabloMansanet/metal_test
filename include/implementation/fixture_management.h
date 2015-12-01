@@ -11,7 +11,4 @@ struct metal_fixture_type;
       } \
    } \
 
-int metal_strlen(const char* str);
-int metal_string_eq(const char* str1, const char* str2);
-
 #endif
