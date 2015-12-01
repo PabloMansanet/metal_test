@@ -1,6 +1,19 @@
 #ifndef TYPE_PUNNING_H
 #define TYPE_PUNNING_H
 
+//TODO: Check endianness 
+#define METAL_FILL_UNION(union_name, lvalue) { \
+   union_name.ll = 0; \
+   char* lvalue_byte_handle = (char*)&lvalue; \
+   char* union_byte_handle = (char*)&union_name; \
+   int i; \
+     for (i = 0; i < sizeof(lvalue); i++) \
+     { \
+        union_byte_handle[i] = lvalue_byte_handle[i]; \
+     } \
+   }
+
+
 typedef union 
 {
    float f;

@@ -14,16 +14,19 @@ METAL_SUITE_BEGIN
       ApplicationRun();
 
       // Then
-      METAL_ASSERT_EQ(1, METAL_FIXTURE.timesModuleInitCalled);
+      int expected = 1;
+      METAL_ASSERT_EQ(expected, METAL_FIXTURE.timesModuleInitCalled);
    }
 
    METAL_TEST(failing_test_as_sanity_check_that_fixture_is_reset_between_tests)
    {
       // Will fail, this should've been reset
-      METAL_ASSERT_EQ(1, METAL_FIXTURE.timesModuleInitCalled);
+      int expected = 1;
+      METAL_ASSERT_EQ(expected, METAL_FIXTURE.timesModuleInitCalled);
 
       // This assert is never reached
-      METAL_ASSERT(0);
+      expected = 0;
+      METAL_ASSERT(expected);
    }
 
 }

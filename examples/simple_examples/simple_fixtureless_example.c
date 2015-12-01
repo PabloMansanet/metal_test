@@ -22,7 +22,9 @@ METAL_SUITE_BEGIN
 
    METAL_TEST(example_second_failing_test) 
    {
-      METAL_ASSERT_EQ(-5,0);
+      int expected = -5;
+      int actual = 0;
+      METAL_ASSERT_EQ(expected, actual);
    }
 }
 METAL_SUITE_END 
