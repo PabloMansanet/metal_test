@@ -16,7 +16,6 @@
      } \
    }
 
-
 typedef union 
 {
    float f;
@@ -38,5 +37,4 @@ void metal_interpret_and_print_ll(const char* prefix, long long value);
 void metal_interpret_and_print_ld(const char* prefix, long double value);
 void metal_report_possible_values(metal_punning_union* mpu);
 
-   
 #endif
