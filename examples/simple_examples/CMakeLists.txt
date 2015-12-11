@@ -2,6 +2,7 @@ set(EXAMPLES
     simple_fixture_example
     simple_fixtureless_example
     simple_string_example
+    simple_mem_eq_example
     simple_types_example)
 
 foreach (EXAMPLE ${EXAMPLES})
