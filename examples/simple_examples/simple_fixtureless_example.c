@@ -26,5 +26,11 @@ METAL_SUITE_BEGIN
       int actual = 0;
       METAL_ASSERT_EQ(expected, actual);
    }
+
+   METAL_TEST(example_third_failing_test) 
+   {
+      int expected = 1;
+      METAL_ASSERT_FALSE(expected);
+   }
 }
 METAL_SUITE_END 
