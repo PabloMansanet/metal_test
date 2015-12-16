@@ -85,6 +85,8 @@
    } \
    if (failureReported) \
       metal_print_string("\n"); \
+      metal_print_string(metal_current_test); \
+      metal_print_string(" failed!\n"); \
       METAL_MAIN_TRAMPOLINE(); \
 }
    
