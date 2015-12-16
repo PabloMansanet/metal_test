@@ -62,8 +62,8 @@
       metal_print_string("\n"); \
    } \
    char failureReported = 0; \
-   char* expectedByteHandle = (char*)&expected; \
-   char* actualByteHandle = (char*)&actual; \
+   char* expectedByteHandle = (char*)expected; \
+   char* actualByteHandle = (char*)actual; \
    for (int i = 0; i < size; i++) \
    { \
       if (expectedByteHandle[i] != actualByteHandle [i]) \
@@ -84,10 +84,12 @@
       } \
    } \
    if (failureReported) \
+      { \
       metal_print_string("\n"); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
       METAL_MAIN_TRAMPOLINE(); \
+      } \
 }
    
 

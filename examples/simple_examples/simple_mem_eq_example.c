@@ -21,15 +21,15 @@ METAL_SUITE_BEGIN
 {
    METAL_TEST(passing_mem_eq_test)
    {
-      METAL_ASSERT_MEM_EQ(METAL_FIXTURE.testVariableAlpha, 
-                          METAL_FIXTURE.testVariableBeta, 
+      METAL_ASSERT_MEM_EQ(&METAL_FIXTURE.testVariableAlpha, 
+                          &METAL_FIXTURE.testVariableBeta, 
                           2);
    }
    
    METAL_TEST(failing_mem_eq_test)
    {
-      METAL_ASSERT_MEM_EQ(METAL_FIXTURE.testVariableAlpha, 
-                          METAL_FIXTURE.testVariableBeta, 
+      METAL_ASSERT_MEM_EQ(&METAL_FIXTURE.testVariableAlpha, 
+                          &METAL_FIXTURE.testVariableBeta, 
                           sizeof(UserDefinedType));
    }
 }
