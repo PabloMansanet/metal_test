@@ -21,7 +21,7 @@ METAL_SUITE_BEGIN
    {
       METAL_ASSERT(METAL_FIXTURE.example_integer);
 
-      int expected_value = 7;
+      volatile int expected_value = 7;
       METAL_ASSERT_EQ(expected_value, METAL_FIXTURE.example_integer);
       METAL_FIXTURE.example_integer = 0; //Irrelevant, since the fixture will be recreated between tests.
    };

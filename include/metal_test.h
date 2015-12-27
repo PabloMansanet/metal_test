@@ -39,11 +39,18 @@
    (void)0;
 
 #define METAL_SUITE_END \
-   metal_print_string("Test suite "__FILE__" finished:\n"); \
+   metal_print_string("\n=========================\n");  \
+   metal_print_string("== Test Suite Finished == "); \
+   metal_print_string(__FILE__"\n"); \
+   metal_print_string("========================= ");  \
    metal_print_long_long(metal_tests_ran - metal_tests_failed); \
-   metal_print_string(" out of "); \
+   metal_print_string("/"); \
    metal_print_long_long(metal_tests_ran); \
-   metal_print_string(" tests passed\n"); \
+   metal_print_string(" tests passed: "); \
+   if (metal_tests_failed == 0) \
+      metal_print_string("Success!\n"); \
+   else \
+      metal_print_string("Failure!\n"); \
    if (metal_current_test) metal_teardown(); \
 }  // End main
 

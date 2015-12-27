@@ -32,19 +32,19 @@
 // of the input types. Only accepts lvalues, so the "expected"/"actual" pattern
 // is enforced.
 #define METAL_ASSERT_EQ(expected, actual) { \
-   metal_punning_union expected_value; \
-   METAL_FILL_UNION(expected_value, expected); \
-   metal_punning_union actual_value; \
-   METAL_FILL_UNION(actual_value, actual); \
-   if (!metal_bitwise_compare(&expected_value, &actual_value)) { \
+   metal_punning_union metal_expected_value; \
+   METAL_FILL_UNION(metal_expected_value, expected); \
+   metal_punning_union metal_actual_value; \
+   METAL_FILL_UNION(metal_actual_value, actual); \
+   if (!metal_bitwise_compare(&metal_expected_value, &metal_actual_value)) { \
       metal_print_string("  * Assertion failure at "__FILE__":"); \
       metal_print_long_long(__LINE__); \
       metal_print_string("\n  |---> Expected: \""#expected"\", evaluated as: 0x"); \
-      metal_print_hex(expected_value.ll); \
-      metal_report_possible_values(&expected_value); \
+      metal_print_hex(metal_expected_value.ll); \
+      metal_report_possible_values(&metal_expected_value); \
       metal_print_string("\n  |---> Actual: \""#actual"\", evaluated as: 0x"); \
-      metal_print_hex(actual_value.ll); \
-      metal_report_possible_values(&actual_value); \
+      metal_print_hex(metal_actual_value.ll); \
+      metal_report_possible_values(&metal_actual_value); \
       metal_print_string("\n  \\--> Test "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
@@ -60,14 +60,14 @@
       metal_print_long_long(__LINE__); \
       metal_print_string("\n"); \
    } \
-   char failureReported = 0; \
-   char* expectedByteHandle = (char*)expected; \
-   char* actualByteHandle = (char*)actual; \
+   char metal_failure_reported = 0; \
+   char* metal_expected_byte_handle = (char*)expected; \
+   char* metal_actual_byte_handle = (char*)actual; \
    for (int i = 0; i < size; i++) \
    { \
-      if (expectedByteHandle[i] != actualByteHandle [i]) \
+      if (metal_expected_byte_handle[i] != metal_actual_byte_handle[i]) \
       { \
-         if (!failureReported) \
+         if (!metal_failure_reported) \
          { \
             metal_print_string("  * Assertion failure at "__FILE__":"); \
             metal_print_long_long(__LINE__); \
@@ -75,14 +75,14 @@
             metal_print_string("\n  |-----> Actual: "#actual"\""); \
             metal_print_string("\n  |-----> Memory differs at the following byte indices:"); \
             metal_print_string("\n  |---------> "); \
-            failureReported = 1; \
+            metal_failure_reported = 1; \
          } \
          metal_print_string("["); \
          metal_print_long_long(i); \
          metal_print_string("]"); \
       } \
    } \
-   if (failureReported) \
+   if (metal_failure_reported) \
       { \
       metal_print_string("\n"); \
       metal_print_string(metal_current_test); \
