@@ -28,16 +28,22 @@
 #define METAL_FIXTURE metal_fixture
 #define METAL_FIXTURE_TYPE metal_fixture_type
 
-
 #define METAL_SUITE_BEGIN \
    static char* metal_current_test = 0; \
    static char metal_skip = 0; \
+   static unsigned int metal_tests_ran = 0; \
+   static unsigned int metal_tests_failed = 0; \
    int main(void) \
    { \
    metal_main: \
    (void)0;
 
 #define METAL_SUITE_END \
+   metal_print_string("Test suite "__FILE__" finished:\n"); \
+   metal_print_long_long(metal_tests_ran - metal_tests_failed); \
+   metal_print_string(" out of "); \
+   metal_print_long_long(metal_tests_ran); \
+   metal_print_string(" tests passed\n"); \
    if (metal_current_test) metal_teardown(); \
 }  // End main
 
@@ -59,6 +65,7 @@
                          "-- Running test -- "); \
       metal_print_string(metal_current_test); \
       metal_print_string("\n------------------\n"); \
+      metal_tests_ran++; \
       metal_fixture_nuke(); \
       metal_setup(); \
    } \

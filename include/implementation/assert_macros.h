@@ -1,5 +1,4 @@
 #ifndef ASSERT_MACROS_H
-#define ASSERT_MACROS_H
 
 #include "type_punning.h"
 
@@ -11,7 +10,7 @@
       metal_print_string("\n  |---> "#value" evaluated as false\n  \\---> "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
-      METAL_MAIN_TRAMPOLINE(); \
+      METAL_MAIN_FAIL_TRAMPOLINE(); \
    } \
 }
 
@@ -25,7 +24,7 @@
       metal_print_string("\n  |---> "#value" evaluated as true\n  \\---> "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
-      METAL_MAIN_TRAMPOLINE(); \
+      METAL_MAIN_FAIL_TRAMPOLINE(); \
    } \
 }
 
@@ -49,7 +48,7 @@
       metal_print_string("\n  \\--> Test "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
-      METAL_MAIN_TRAMPOLINE(); \
+      METAL_MAIN_FAIL_TRAMPOLINE(); \
    } \
 }
 
@@ -88,10 +87,9 @@
       metal_print_string("\n"); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
-      METAL_MAIN_TRAMPOLINE(); \
+      METAL_MAIN_FAIL_TRAMPOLINE(); \
       } \
 }
-   
 
 int metal_strlen(const char* str);
 int metal_string_eq(const char* str1, const char* str2);
@@ -109,12 +107,13 @@ int metal_string_eq(const char* str1, const char* str2);
       metal_print_string("\"\n  \\--> Test "); \
       metal_print_string(metal_current_test); \
       metal_print_string(" failed!\n"); \
-      METAL_MAIN_TRAMPOLINE(); \
+      METAL_MAIN_FAIL_TRAMPOLINE(); \
    } \
 }
 
-#define METAL_MAIN_TRAMPOLINE() { \
+#define METAL_MAIN_FAIL_TRAMPOLINE() { \
    metal_skip = 1; \
+   metal_tests_failed++; \
    goto metal_main; }
 
 #endif
