@@ -47,3 +47,36 @@ failing_mem_eq_test failed!
 ==       Failure!      == 1/2 tests passed 
 =========================
 ```
+
+When comparing arbitrary data types using METAL_ASSERT_EQ, the framework provides possible interpretations:
+```
+------------------
+-- Running test -- example_float_test
+------------------
+  * Assertion failure at /home/cuervo/Desktop/repos/metal_test/examples/simple_examples/simple_fixture_example.c:32
+  |---> Expected: "expected_value", evaluated as: 0x410ccccd
+  |      \->Interpretations: 
+  |           [char:               -51]
+  |           [int:                1091357901]
+  |           [long:               1091357901]
+  |           [long long:          1091357901]
+  |           [unsigned char:      205]
+  |           [unsigned int:       1091357901]
+  |           [unsigned long:      1091357901]
+  |           [float:              8.800000]
+  |           [double:             0.000000]
+  |           [long double:        0.000000]
+  |---> Actual: "METAL_FIXTURE.example_float", evaluated as: 0x40b00000
+  |      \->Interpretations: 
+  |           [char:               0]
+  |           [int:                1085276160]
+  |           [long:               1085276160]
+  |           [long long:          1085276160]
+  |           [unsigned char:      0]
+  |           [unsigned int:       1085276160]
+  |           [unsigned long:      1085276160]
+  |           [float:              5.500000]
+  |           [double:             0.000000]
+  |           [long double:        0.000000]
+  \--> Test example_float_test failed!
+```
