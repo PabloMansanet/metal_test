@@ -54,7 +54,7 @@
 
 // Compare two blocks of memory based on a size parameter. Expects lvalues.
 #define METAL_ASSERT_MEM_EQ(expected, actual, size) { \
-   if (size > sizeof(actual) || size > sizeof(expected)) \
+   if (size > sizeof(*actual) || size > sizeof(*expected)) \
    { \
       metal_print_string("Out of bounds METAL_ASSERT_MEM_EQ access at "__FILE__":"); \
       metal_print_long_long(__LINE__); \
