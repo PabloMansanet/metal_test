@@ -36,7 +36,6 @@ This is the output you'll get from the example *simple_mem_eq_example.c*:
 ------------------
 -- Running test -- failing_mem_eq_test
 ------------------
-Out of bounds METAL_ASSERT_MEM_EQ access at /repos/metal_test/examples/simple_examples/simple_mem_eq_example.c:33
   * Assertion failure at /repos/metal_test/examples/simple_examples/simple_mem_eq_example.c:33
   |-----> Expected: &METAL_FIXTURE.testVariableAlpha"
   |-----> Actual: &METAL_FIXTURE.testVariableBeta"
