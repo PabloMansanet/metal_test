@@ -74,7 +74,7 @@
             metal_print_string("\n  |-----> Expected: "#expected"\""); \
             metal_print_string("\n  |-----> Actual: "#actual"\""); \
             metal_print_string("\n  |-----> Memory differs at the following byte indices:"); \
-            metal_print_string("\n  |---------> "); \
+            metal_print_string("\n  \\---------> "); \
             metal_failure_reported = 1; \
          } \
          metal_print_string("["); \
@@ -94,7 +94,7 @@
 int metal_strlen(const char* str);
 int metal_string_eq(const char* str1, const char* str2);
 
-#define METAL_ASSERT_STREQ(expected, actual) { \
+#define METAL_ASSERT_STR_EQ(expected, actual) { \
    const char* evaluated_expected = (expected); \
    const char* evaluated_actual = (actual); \
    if (!metal_string_eq(evaluated_expected, evaluated_actual)) { \

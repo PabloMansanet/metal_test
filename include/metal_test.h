@@ -5,9 +5,9 @@
 #include "implementation/fixture_management.h"
 
 #if defined (__LINE__) && defined (__FILE__)
-   #include "implementation/assert_macros.h"
-#else
    #include "implementation/simple_assert_macros.h"
+#else
+   #include "implementation/assert_macros.h"
 #endif
 
 #define METAL_FIXTURE_DEFINE \
@@ -43,7 +43,7 @@
    metal_print_string("== Test Suite Finished == "); \
    metal_print_string(__FILE__"\n"); \
    if (metal_tests_failed == 0) \
-      metal_print_string("==       Success!      ==\n"); \
+      metal_print_string("==       Success!      == "); \
    else \
       metal_print_string("==       Failure!      == "); \
    metal_print_long_long(metal_tests_ran - metal_tests_failed); \
