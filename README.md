@@ -24,3 +24,27 @@ The steps are as follows:
 * Provide implementations for the four hooks in *print_hooks.h*
 * Build and link against *metal_test.c*
 * Include *metal_test.h* in your test file, and follow the patterns outlied in the examples.
+
+## How does the output look?
+
+This is the output you'll get from the example *simple_mem_eq_example.c*:
+
+```
+------------------
+-- Running test -- passing_mem_eq_test
+------------------
+------------------
+-- Running test -- failing_mem_eq_test
+------------------
+Out of bounds METAL_ASSERT_MEM_EQ access at /home/cuervo/Desktop/repos/metal_test/examples/simple_examples/simple_mem_eq_example.c:33
+  * Assertion failure at /home/cuervo/Desktop/repos/metal_test/examples/simple_examples/simple_mem_eq_example.c:33
+  |-----> Expected: &METAL_FIXTURE.testVariableAlpha"
+  |-----> Actual: &METAL_FIXTURE.testVariableBeta"
+  |-----> Memory differs at the following byte indices:
+  \---------> [15][40]
+failing_mem_eq_test failed!
+=========================
+== Test Suite Finished == /home/cuervo/Desktop/repos/metal_test/examples/simple_examples/simple_mem_eq_example.c
+==       Failure!      == 1/2 tests passed 
+=========================
+```
