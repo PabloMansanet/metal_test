@@ -4,5 +4,6 @@
 METAL_FIXTURE_DEFINE {
    unsigned int timesModuleInitCalled;
 };
+METAL_FIXTURE_EXTERN;
 
 #endif

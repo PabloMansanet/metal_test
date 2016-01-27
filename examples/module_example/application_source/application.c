@@ -5,5 +5,5 @@ void ApplicationRun(void)
 {
    ModuleInit();
 
-   // Run application
+   // Run application...
 }
