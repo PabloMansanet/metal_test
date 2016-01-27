@@ -3,12 +3,7 @@
 
 #include "metal_hooks.h"
 #include "implementation/fixture_management.h"
-
-#if defined (__LINE__) && defined (__FILE__)
-   #include "implementation/simple_assert_macros.h"
-#else
-   #include "implementation/assert_macros.h"
-#endif
+#include "implementation/assert_macros.h"
 
 #define METAL_FIXTURE_DEFINE \
    struct metal_fixture_type
