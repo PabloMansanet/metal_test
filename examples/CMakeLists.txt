@@ -12,4 +12,5 @@ add_library(stdlib_metal_hooks ../source/stdlib_metal_hooks.c)
 add_library(metal_test ../source/metal_test.c)
 
 add_subdirectory(simple_examples)
+add_subdirectory(single_main_example)
 add_subdirectory(module_example)
