@@ -34,7 +34,7 @@
    (void)0;
 
 #define METAL_SUITE_END \
-   metal_print_string("=========================\n");  \
+   metal_print_string("=========================\n"); \
    metal_print_string("== Test Suite Finished == "); \
    metal_print_string(__FILE__"\n"); \
    if (metal_tests_failed == 0) \
@@ -47,6 +47,37 @@
    metal_print_string(" tests passed \n"); \
    metal_print_string("=========================\n");  \
    if (metal_current_test) metal_teardown(); \
+}  // End main
+
+#define METAL_TESTS_BEGIN(FunctionName) \
+   static char* metal_current_test = 0; \
+   static char metal_skip = 0; \
+   static unsigned int metal_tests_ran = 0; \
+   static unsigned int metal_tests_failed = 0; \
+   int FunctionName(void) \
+   { \
+   metal_print_string("=========================\n"); \
+   metal_print_string("== Starting Test Suite == "); \
+   metal_print_string(#FunctionName); \
+   metal_print_string("\n=========================\n"); \
+   metal_main: \
+   (void)0;
+
+#define METAL_TESTS_END \
+   metal_print_string("==========================\n");  \
+   metal_print_string("== Test Module Finished == "); \
+   metal_print_string(__FILE__"\n"); \
+   if (metal_tests_failed == 0) \
+      metal_print_string("==       Success!       == "); \
+   else \
+      metal_print_string("==       Failure!       == "); \
+   metal_print_long_long(metal_tests_ran - metal_tests_failed); \
+   metal_print_string("/"); \
+   metal_print_long_long(metal_tests_ran); \
+   metal_print_string(" tests passed \n"); \
+   metal_print_string("==========================\n");  \
+   if (metal_current_test) metal_teardown(); \
+   return metal_tests_failed; \
 }  // End main
 
 #define METAL_TEST( test_name ) \

@@ -54,12 +54,6 @@
 
 // Compare two blocks of memory based on a size parameter. Expects lvalues.
 #define METAL_ASSERT_MEM_EQ(expected, actual, size) { \
-   if (size > sizeof(*actual) || size > sizeof(*expected)) \
-   { \
-      metal_print_string("Out of bounds METAL_ASSERT_MEM_EQ access at "__FILE__":"); \
-      metal_print_long_long(__LINE__); \
-      metal_print_string("\n"); \
-   } \
    char metal_failure_reported = 0; \
    char* metal_expected_byte_handle = (char*)expected; \
    char* metal_actual_byte_handle = (char*)actual; \
