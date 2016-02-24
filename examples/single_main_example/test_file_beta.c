@@ -9,7 +9,7 @@ METAL_TESTS_BEGIN(tests_beta)
 {
   METAL_TEST(failing_test_in_file_beta)
   {
-    METAL_ASSERT_TRUE(false);
+    METAL_ASSERT_TRUE(0);
   }
 }
-METAL_SUITE_END 
+METAL_TESTS_END 

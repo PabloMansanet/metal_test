@@ -1,8 +1,13 @@
-extern void tests_alpha(void);
-extern void tests_beta(void);
+#include <stdio.h>
+
+extern int tests_alpha(void);
+extern int tests_beta(void);
 
 int main(void)
 {
-  tests_alpha();
-  tests_beta();
+  int total_tests_failed = 0;
+  total_tests_failed += tests_alpha();
+  total_tests_failed += tests_beta();
+
+  printf("A total of %d tests have failed\n", total_tests_failed);
 }
