@@ -5,7 +5,7 @@
 #define METAL_FILL_UNION(union_name, lvalue) { \
    char* lvalue_byte_handle = (char*)&lvalue; \
    char* union_byte_handle = (char*)&union_name; \
-   int i; \
+   unsigned int i; \
      for (i = 0; i < sizeof(metal_punning_union); i++) \
      { \
         union_byte_handle[i] = 0x00; \

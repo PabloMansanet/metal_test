@@ -31,7 +31,7 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
    char* byte_handle_1 = (char*) mpu1;
    char* byte_handle_2 = (char*) mpu2;
 
-   for (int i = 0; i< sizeof(metal_punning_union); i++) {
+   for (unsigned int i = 0; i < sizeof(metal_punning_union); i++) {
       if (byte_handle_1[i] != byte_handle_2[i]) 
          return 0;
    }

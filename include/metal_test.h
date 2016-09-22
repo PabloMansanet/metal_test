@@ -47,6 +47,7 @@
    metal_print_string(" tests passed \n"); \
    metal_print_string("=========================\n");  \
    if (metal_current_test) metal_teardown(); \
+   return metal_tests_failed; \
 }  // End main
 
 #define METAL_TESTS_BEGIN(FunctionName) \
