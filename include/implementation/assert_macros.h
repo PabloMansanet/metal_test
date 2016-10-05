@@ -57,7 +57,7 @@
    char metal_failure_reported = 0; \
    char* metal_expected_byte_handle = (char*)expected; \
    char* metal_actual_byte_handle = (char*)actual; \
-   for (int i = 0; i < size; i++) \
+   for (size_t i = 0; i < size; i++) \
    { \
       if (metal_expected_byte_handle[i] != metal_actual_byte_handle[i]) \
       { \
