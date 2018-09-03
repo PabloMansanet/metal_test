@@ -40,21 +40,21 @@ int metal_bitwise_compare(metal_punning_union* mpu1, metal_punning_union* mpu2)
 
 void metal_interpret_and_print_ll(const char* prefix, long long value) 
 {
-   metal_print_string(prefix);
-   metal_print_long_long(value);
-   metal_print_string("]");
+   metal_print_string(prefix, metal_no_color);
+   metal_print_long_long(value, metal_no_color);
+   metal_print_string("]", metal_no_color);
 }
 
 void metal_interpret_and_print_ld(const char* prefix, long double value)
 {
-   metal_print_string(prefix);
-   metal_print_long_double(value);
-   metal_print_string("]");
+   metal_print_string(prefix, metal_no_color);
+   metal_print_long_double(value, metal_no_color);
+   metal_print_string("]", metal_no_color);
 }
 
 void metal_report_possible_values(metal_punning_union* mpu) 
 {
-   metal_print_string(          "\n  |      \\->Interpretations: ");
+   metal_print_string(          "\n  |      \\->Interpretations: ", metal_no_color);
    metal_interpret_and_print_ll("\n  |           [char:               ",mpu->c);
    metal_interpret_and_print_ll("\n  |           [int:                ",mpu->i);
    metal_interpret_and_print_ll("\n  |           [long:               ",mpu->l);

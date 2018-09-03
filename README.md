@@ -21,7 +21,7 @@ If you find yourself going through many small projects, each with their own tech
 The examples folder comes with a few test files for reference, which can be built with CMake. The *module example* directory provides a more meaningful example involving a separate fixture file. 
 
 The steps are as follows:
-* Provide implementations for the four hooks in *print_hooks.h*
+* Provide implementations for the four hooks in *print_hooks.h*. If colors aren't available in the target system, the color argument can simply be ignored.
 * Build and link against *metal_test.c*
 * Include *metal_test.h* in your test file, and follow the patterns outlied in the examples.
 
