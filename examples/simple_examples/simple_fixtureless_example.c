@@ -1,4 +1,6 @@
+#define METAL_USE_COLORS
 #include "metal_test.h"
+
 
 METAL_FIXTURE_DEFINE {};
 METAL_FIXTURE_DECLARE;
